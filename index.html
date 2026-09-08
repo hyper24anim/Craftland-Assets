@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Craftland Studio Assetlari</title>
+  <title>Craftland Studio Assets</title>
   <style>
     * {
       box-sizing: border-box;
@@ -17,18 +17,83 @@
       padding: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
     .container {
       width: 100%;
       max-width: 650px;
     }
+
+    /* Til Tanlash Ekrani Modal Modal/Overlay */
+    #langModal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 20px;
+      padding: 35px 25px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+      text-align: center;
+      width: 100%;
+    }
+
+    .lang-title-group {
+      margin-bottom: 25px;
+    }
+
+    .lang-title-group h2 {
+      font-size: 18px;
+      color: #f4f4f5;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .btn-lang-select {
+      background-color: #121215;
+      border: 1px solid #27272a;
+      color: #ffffff;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 1px;
+    }
+
+    .btn-lang-select:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+
+    .btn-lang-select:active {
+      transform: scale(0.97);
+    }
+
+    /* Asosiy Content (Boshida yashiringan bo'ladi) */
+    #mainContent {
+      display: none;
+      width: 100%;
+    }
+
     header {
       text-align: center;
       margin-bottom: 30px;
       padding-top: 10px;
     }
     header h1 {
-      font-size: 28px;
+      font-size: 26px;
       letter-spacing: 1px;
       color: #ffffff;
     }
@@ -117,45 +182,111 @@
 <body>
 
   <div class="container">
-    <header>
-      <h1>CRAFTLAND STUDIO ASSETLARI</h1>
-      <p>Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar</p>
-    </header>
 
-    <!-- Emote Menyu Asset -->
-    <div class="asset-card">
-      <span class="badge">BEPUL ASSET</span>
-      <h2 class="asset-title">Craftland Emote Menyu G'ildiragi</h2>
-      
-      <img src="9721.jpg" alt="Emote Menyu Korinishi" class="preview-img">
-      
-      <div class="code-box">
-        <span id="emoteCode">#ASSET871EE30522D04AB69CED367617AA6E505524</span>
+    <!-- 1. TILNI TANLASH EKRANI -->
+    <div id="langModal">
+      <div class="lang-title-group">
+        <h2>Tilni tanlang</h2>
+        <h2>Выберите язык</h2>
+        <h2>Select language</h2>
       </div>
 
-      <button class="btn-copy" id="emoteBtn" onclick="copyCode('emoteCode', 'emoteBtn')">KODDAN NUSXA OLISH</button>
+      <div class="lang-buttons">
+        <button class="btn-lang-select" onclick="chooseLanguage('uz')">O'ZBEKCHA</button>
+        <button class="btn-lang-select" onclick="chooseLanguage('ru')">РУССКИЙ</button>
+        <button class="btn-lang-select" onclick="chooseLanguage('en')">ENGLISH</button>
+      </div>
     </div>
 
-    <!-- Tez Orada Yangi Assetlar -->
-    <div class="coming-soon">
-      <h3>TEZ ORADA YANGI ASSETLAR QO'SHILADI...</h3>
+    <!-- 2. ASOSIY SAYT BÖLIMI -->
+    <div id="mainContent">
+      <header>
+        <h1 id="headerTitle">CRAFTLAND STUDIO ASSETLARI</h1>
+        <p id="headerSub">Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar</p>
+      </header>
+
+      <!-- Emote Menyu Asset -->
+      <div class="asset-card">
+        <span class="badge" id="badgeText">BEPUL ASSET</span>
+        <h2 class="asset-title" id="assetTitle">Craftland Emote Menyu G'ildiragi</h2>
+        
+        <img src="9721.jpg" alt="Emote Menyu" class="preview-img">
+        
+        <div class="code-box">
+          <span id="emoteCode">#ASSET871EE30522D04AB69CED367617AA6E505524</span>
+        </div>
+
+        <button class="btn-copy" id="emoteBtn" onclick="copyCode('emoteCode', 'emoteBtn')">KODDAN NUSXA OLISH</button>
+      </div>
+
+      <!-- Tez Orada -->
+      <div class="coming-soon">
+        <h3 id="comingSoonText">TEZ ORADA YANGI ASSETLAR QO'SHILADI...</h3>
+      </div>
     </div>
+
   </div>
 
   <script>
+    const translations = {
+      uz: {
+        headerTitle: "CRAFTLAND STUDIO ASSETLARI",
+        headerSub: "Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar",
+        badgeText: "BEPUL ASSET",
+        assetTitle: "Craftland Emote Menyu G'ildiragi",
+        copyBtn: "KODDAN NUSXA OLISH",
+        copiedBtn: "NUSXA OLINDI!",
+        comingSoon: "TEZ ORADA YANGI ASSETLAR QO'SHILADI..."
+      },
+      ru: {
+        headerTitle: "АССЕТЫ CRAFTLAND STUDIO",
+        headerSub: "Бесплатные качественные ресурсы для авторов Free Fire Craftland",
+        badgeText: "БЕСПЛАТНЫЙ АССЕТ",
+        assetTitle: "Колесо Эмоций Craftland",
+        copyBtn: "СКОПИРОВАТЬ КОД",
+        copiedBtn: "СКОПИРОВАНО!",
+        comingSoon: "СКОРО ПОЯВЯТСЯ НОВЫЕ АССЕТЫ..."
+      },
+      en: {
+        headerTitle: "CRAFTLAND STUDIO ASSETS",
+        headerSub: "Free high-quality resources for Free Fire Craftland creators",
+        badgeText: "FREE ASSET",
+        assetTitle: "Craftland Emote Wheel Menu",
+        copyBtn: "COPY CODE",
+        copiedBtn: "COPIED!",
+        comingSoon: "MORE ASSETS COMING SOON..."
+      }
+    };
+
+    let selectedLang = "uz";
+
+    function chooseLanguage(lang) {
+      selectedLang = lang;
+
+      // Matnlarni almashtirish
+      document.getElementById("headerTitle").innerText = translations[lang].headerTitle;
+      document.getElementById("headerSub").innerText = translations[lang].headerSub;
+      document.getElementById("badgeText").innerText = translations[lang].badgeText;
+      document.getElementById("assetTitle").innerText = translations[lang].assetTitle;
+      document.getElementById("emoteBtn").innerText = translations[lang].copyBtn;
+      document.getElementById("comingSoonText").innerText = translations[lang].comingSoon;
+
+      // Til oyna oynasini berkitish va asosiy contentni ko'rsatish
+      document.getElementById("langModal").style.display = "none";
+      document.getElementById("mainContent").style.display = "block";
+    }
+
     function copyCode(elementId, buttonId) {
       let rawText = document.getElementById(elementId).innerText;
-      
-      // '#' belgisini saqlab barcha harflarni KATTA qiladi
       let cleanText = rawText.toUpperCase();
 
       navigator.clipboard.writeText(cleanText).then(() => {
         const btn = document.getElementById(buttonId);
-        btn.innerText = "NUSXA OLINDI!";
+        btn.innerText = translations[selectedLang].copiedBtn;
         btn.style.backgroundColor = "#16a34a";
         
         setTimeout(() => {
-          btn.innerText = "KODDAN NUSXA OLISH";
+          btn.innerText = translations[selectedLang].copyBtn;
           btn.style.backgroundColor = "#2563eb";
         }, 2000);
       });
