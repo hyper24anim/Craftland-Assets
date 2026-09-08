@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craftland Assets Studio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 650px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-top: 10px;
+    }
+    header h1 {
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+    header p {
+      color: #a1a1aa;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .asset-card {
+      background-color: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+    .badge {
+      display: inline-block;
+      background-color: #22c55e;
+      color: #000;
+      font-weight: bold;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .asset-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #f4f4f5;
+    }
+    .preview-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #27272a;
+      margin-bottom: 16px;
+    }
+    .code-box {
+      background-color: #121215;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #38bdf8;
+      word-break: break-all;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-copy {
+      width: 100%;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .btn-copy:hover {
+      background-color: #1d4ed8;
+    }
+    .btn-copy:active {
+      transform: scale(0.98);
+    }
+    .coming-soon {
+      text-align: center;
+      margin-top: 45px;
+      padding: 30px;
+      border: 1px dashed #27272a;
+      border-radius: 16px;
+      background-color: #050505;
+    }
+    .coming-soon h3 {
+      font-size: 16px;
+      color: #a1a1aa;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>CRAFTLAND STUDIO ASSETS</h1>
+      <p>Free Fire Craftland creatorlari uchun bepul va sifatli resurslar</p>
+    </header>
+
+    <!-- Emote Menu Asset -->
+    <div class="asset-card">
+      <span class="badge">BEPUL ASSET</span>
+      <h2 class="asset-title">Craftland Emote Menu Wheel</h2>
+      
+      <!-- Rasm (Sayt joylashgan papkaga 9721.jpg deb saqlab qo'ying) -->
+      <img src="9721.jpg" alt="Emote Menu Wheel Preview" class="preview-img">
+      
+      <div class="code-box">
+        <span id="assetCode">#ASSET871EE30522D04AB69CED367617AA6E505524</span>
+      </div>
+
+      <button class="btn-copy" id="copyBtn" onclick="copyAssetCode()">COPY CODE</button>
+    </div>
+
+    <!-- More Assets Coming Soon -->
+    <div class="coming-soon">
+      <h3>MORE ASSETS COMING SOON ...</h3>
+    </div>
+  </div>
+
+  <script>
+    function copyAssetCode() {
+      const codeText = document.getElementById("assetCode").innerText;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const btn = document.getElementById("copyBtn");
+        btn.innerText = "COPIED!";
+        btn.style.backgroundColor = "#16a34a";
+        
+        setTimeout(() => {
+          btn.innerText = "COPY CODE";
+          btn.style.backgroundColor = "#2563eb";
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
