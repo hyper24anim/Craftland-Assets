@@ -144,21 +144,24 @@
     </div>
   </div>
 
-  <script>
-    function copyAssetCode() {
-      const codeText = document.getElementById("assetCode").innerText;
-      navigator.clipboard.writeText(codeText).then(() => {
-        const btn = document.getElementById("copyBtn");
-        btn.innerText = "COPIED!";
-        btn.style.backgroundColor = "#16a34a";
-        
-        setTimeout(() => {
-          btn.innerText = "COPY CODE";
-          btn.style.backgroundColor = "#2563eb";
-        }, 2000);
-      });
-    }
-  </script>
+<script>
+  function copyCode(elementId, buttonId) {
+    // Kod matnini olish
+    let rawText = document.getElementById(elementId).innerText;
+    
+    // '#' belgisini saqlab qolgan holda barcha harflarni KATTA qilish
+    let cleanText = rawText.toUpperCase();
 
-</body>
-</html>
+    // Buferga (Clipboard) nusxalash
+    navigator.clipboard.writeText(cleanText).then(() => {
+      const btn = document.getElementById(buttonId);
+      btn.innerText = "NUSXA OLINDI!";
+      btn.style.backgroundColor = "#16a34a";
+      
+      setTimeout(() => {
+        btn.innerText = "KODDAN NUSXA OLISH";
+        btn.style.backgroundColor = "#2563eb";
+      }, 2000);
+    });
+  }
+</script>
