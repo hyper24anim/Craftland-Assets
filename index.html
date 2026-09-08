@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Craftland Assets Studio</title>
+  <title>Craftland Studio Assetlari</title>
   <style>
     * {
       box-sizing: border-box;
@@ -43,6 +43,7 @@
       border-radius: 16px;
       padding: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: 25px;
     }
     .badge {
       display: inline-block;
@@ -78,9 +79,7 @@
       color: #38bdf8;
       word-break: break-all;
       margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-transform: uppercase;
     }
     .btn-copy {
       width: 100%;
@@ -102,16 +101,16 @@
     }
     .coming-soon {
       text-align: center;
-      margin-top: 45px;
+      margin-top: 20px;
       padding: 30px;
       border: 1px dashed #27272a;
       border-radius: 16px;
       background-color: #050505;
     }
     .coming-soon h3 {
-      font-size: 16px;
+      font-size: 15px;
       color: #a1a1aa;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
     }
   </style>
 </head>
@@ -119,49 +118,49 @@
 
   <div class="container">
     <header>
-      <h1>CRAFTLAND STUDIO ASSETS</h1>
-      <p>Free Fire Craftland creatorlari uchun bepul va sifatli resurslar</p>
+      <h1>CRAFTLAND STUDIO ASSETLARI</h1>
+      <p>Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar</p>
     </header>
 
-    <!-- Emote Menu Asset -->
+    <!-- Emote Menyu Asset -->
     <div class="asset-card">
       <span class="badge">BEPUL ASSET</span>
-      <h2 class="asset-title">Craftland Emote Menu Wheel</h2>
+      <h2 class="asset-title">Craftland Emote Menyu G'ildiragi</h2>
       
-      <!-- Rasm (Sayt joylashgan papkaga 9721.jpg deb saqlab qo'ying) -->
-      <img src="9721.jpg" alt="Emote Menu Wheel Preview" class="preview-img">
+      <img src="9721.jpg" alt="Emote Menyu Korinishi" class="preview-img">
       
       <div class="code-box">
-        <span id="assetCode">#ASSET871EE30522D04AB69CED367617AA6E505524</span>
+        <span id="emoteCode">#ASSET871EE30522D04AB69CED367617AA6E505524</span>
       </div>
 
-      <button class="btn-copy" id="copyBtn" onclick="copyAssetCode()">COPY CODE</button>
+      <button class="btn-copy" id="emoteBtn" onclick="copyCode('emoteCode', 'emoteBtn')">KODDAN NUSXA OLISH</button>
     </div>
 
-    <!-- More Assets Coming Soon -->
+    <!-- Tez Orada Yangi Assetlar -->
     <div class="coming-soon">
-      <h3>MORE ASSETS COMING SOON ...</h3>
+      <h3>TEZ ORADA YANGI ASSETLAR QO'SHILADI...</h3>
     </div>
   </div>
 
-<script>
-  function copyCode(elementId, buttonId) {
-    // Kod matnini olish
-    let rawText = document.getElementById(elementId).innerText;
-    
-    // '#' belgisini saqlab qolgan holda barcha harflarni KATTA qilish
-    let cleanText = rawText.toUpperCase();
-
-    // Buferga (Clipboard) nusxalash
-    navigator.clipboard.writeText(cleanText).then(() => {
-      const btn = document.getElementById(buttonId);
-      btn.innerText = "NUSXA OLINDI!";
-      btn.style.backgroundColor = "#16a34a";
+  <script>
+    function copyCode(elementId, buttonId) {
+      let rawText = document.getElementById(elementId).innerText;
       
-      setTimeout(() => {
-        btn.innerText = "KODDAN NUSXA OLISH";
-        btn.style.backgroundColor = "#2563eb";
-      }, 2000);
-    });
-  }
-</script>
+      // '#' belgisini saqlab barcha harflarni KATTA qiladi
+      let cleanText = rawText.toUpperCase();
+
+      navigator.clipboard.writeText(cleanText).then(() => {
+        const btn = document.getElementById(buttonId);
+        btn.innerText = "NUSXA OLINDI!";
+        btn.style.backgroundColor = "#16a34a";
+        
+        setTimeout(() => {
+          btn.innerText = "KODDAN NUSXA OLISH";
+          btn.style.backgroundColor = "#2563eb";
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
