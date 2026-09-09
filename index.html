@@ -25,7 +25,7 @@
       max-width: 650px;
     }
 
-    /* Til Tanlash Ekrani Modal Modal/Overlay */
+    /* Til Tanlash Ekrani Modal */
     #langModal {
       display: flex;
       flex-direction: column;
@@ -81,7 +81,7 @@
       transform: scale(0.97);
     }
 
-    /* Asosiy Content (Boshida yashiringan bo'ladi) */
+    /* Asosiy Content */
     #mainContent {
       display: none;
       width: 100%;
@@ -183,7 +183,7 @@
 
   <div class="container">
 
-    <!-- 1. TILNI TANLASH EKRANI -->
+    <!-- TILNI TANLASH EKRANI -->
     <div id="langModal">
       <div class="lang-title-group">
         <h2>Tilni tanlang</h2>
@@ -198,17 +198,17 @@
       </div>
     </div>
 
-    <!-- 2. ASOSIY SAYT BÖLIMI -->
+    <!-- ASOSIY SAYT BO'LIMI -->
     <div id="mainContent">
       <header>
         <h1 id="headerTitle">CRAFTLAND STUDIO ASSETLARI</h1>
         <p id="headerSub">Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar</p>
       </header>
 
-      <!-- Emote Menyu Asset -->
+      <!-- 1. Emote Menyu Asset -->
       <div class="asset-card">
-        <span class="badge" id="badgeText">BEPUL ASSET</span>
-        <h2 class="asset-title" id="assetTitle">Craftland Emote Menyu G'ildiragi</h2>
+        <span class="badge" id="badgeText1">BEPUL ASSET</span>
+        <h2 class="asset-title" id="assetTitle1">Craftland Emote Menyu G'ildiragi</h2>
         
         <img src="9721.jpg" alt="Emote Menyu" class="preview-img">
         
@@ -217,6 +217,20 @@
         </div>
 
         <button class="btn-copy" id="emoteBtn" onclick="copyCode('emoteCode', 'emoteBtn')">KODDAN NUSXA OLISH</button>
+      </div>
+
+      <!-- 2. Badge Menyu Asset -->
+      <div class="asset-card">
+        <span class="badge" id="badgeText2">BEPUL ASSET</span>
+        <h2 class="asset-title" id="assetTitle2">Craftland Badge & Unvonlar Menyusi</h2>
+        
+        <img src="9754.jpg" alt="Badge Menyu" class="preview-img">
+        
+        <div class="code-box">
+          <span id="badgeCode">#ASSETAC2F8C5820A94241833479AAEC0294B15524</span>
+        </div>
+
+        <button class="btn-copy" id="badgeBtn" onclick="copyCode('badgeCode', 'badgeBtn')">KODDAN NUSXA OLISH</button>
       </div>
 
       <!-- Tez Orada -->
@@ -233,7 +247,8 @@
         headerTitle: "CRAFTLAND STUDIO ASSETLARI",
         headerSub: "Free Fire Craftland ijodkorlari uchun bepul va sifatli resurslar",
         badgeText: "BEPUL ASSET",
-        assetTitle: "Craftland Emote Menyu G'ildiragi",
+        assetTitle1: "Craftland Emote Menyu G'ildiragi",
+        assetTitle2: "Craftland Badge & Unvonlar Menyusi",
         copyBtn: "KODDAN NUSXA OLISH",
         copiedBtn: "NUSXA OLINDI!",
         comingSoon: "TEZ ORADA YANGI ASSETLAR QO'SHILADI..."
@@ -242,7 +257,8 @@
         headerTitle: "АССЕТЫ CRAFTLAND STUDIO",
         headerSub: "Бесплатные качественные ресурсы для авторов Free Fire Craftland",
         badgeText: "БЕСПЛАТНЫЙ АССЕТ",
-        assetTitle: "Колесо Эмоций Craftland",
+        assetTitle1: "Колесо Эмоций Craftland",
+        assetTitle2: "Значки и Меню Званий Craftland",
         copyBtn: "СКОПИРОВАТЬ КОД",
         copiedBtn: "СКОПИРОВАНО!",
         comingSoon: "СКОРО ПОЯВЯТСЯ НОВЫЕ АССЕТЫ..."
@@ -251,7 +267,8 @@
         headerTitle: "CRAFTLAND STUDIO ASSETS",
         headerSub: "Free high-quality resources for Free Fire Craftland creators",
         badgeText: "FREE ASSET",
-        assetTitle: "Craftland Emote Wheel Menu",
+        assetTitle1: "Craftland Emote Wheel Menu",
+        assetTitle2: "Craftland Badges & Title Menu",
         copyBtn: "COPY CODE",
         copiedBtn: "COPIED!",
         comingSoon: "MORE ASSETS COMING SOON..."
@@ -263,15 +280,20 @@
     function chooseLanguage(lang) {
       selectedLang = lang;
 
-      // Matnlarni almashtirish
       document.getElementById("headerTitle").innerText = translations[lang].headerTitle;
       document.getElementById("headerSub").innerText = translations[lang].headerSub;
-      document.getElementById("badgeText").innerText = translations[lang].badgeText;
-      document.getElementById("assetTitle").innerText = translations[lang].assetTitle;
+      
+      document.getElementById("badgeText1").innerText = translations[lang].badgeText;
+      document.getElementById("badgeText2").innerText = translations[lang].badgeText;
+
+      document.getElementById("assetTitle1").innerText = translations[lang].assetTitle1;
+      document.getElementById("assetTitle2").innerText = translations[lang].assetTitle2;
+
       document.getElementById("emoteBtn").innerText = translations[lang].copyBtn;
+      document.getElementById("badgeBtn").innerText = translations[lang].copyBtn;
+
       document.getElementById("comingSoonText").innerText = translations[lang].comingSoon;
 
-      // Til oyna oynasini berkitish va asosiy contentni ko'rsatish
       document.getElementById("langModal").style.display = "none";
       document.getElementById("mainContent").style.display = "block";
     }
